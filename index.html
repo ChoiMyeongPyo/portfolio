@@ -1,627 +1,836 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>최명표 포트폴리오</title>
-<style>
-  @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&family=Inter:wght@300;400;500;600;700&display=swap');
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>최명표 | Cloud Engineer · DevOps · SRE</title>
+  <meta name="description" content="멀티 클라우드 환경 설계·구축·운영 전문가, 최명표의 포트폴리오 — 총 경력 4년+" />
 
-  :root {
-    --primary: #0078D4;
-    --accent: #5B5FC7;
-    --dark: #1a1a2e;
-    --gray-900: #212529;
-    --gray-700: #495057;
-    --gray-500: #868e96;
-    --gray-300: #dee2e6;
-    --gray-100: #f8f9fa;
-    --success: #2e7d32;
-    --border: #e9ecef;
-  }
-
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-
-  body {
-    font-family: 'Noto Sans KR', 'Inter', -apple-system, sans-serif;
-    color: var(--gray-900);
-    line-height: 1.75;
-    max-width: 860px;
-    margin: 0 auto;
-    padding: 48px 48px 60px;
-    background: #fff;
-    -webkit-font-smoothing: antialiased;
-  }
-
-  /* ===== HEADER ===== */
-  .header {
-    margin-bottom: 36px;
-    display: flex; justify-content: space-between; align-items: flex-start; gap: 24px;
-  }
-  .header-text { flex: 1; }
-  .header h1 {
-    font-size: 2.2em; font-weight: 900; color: var(--dark);
-    letter-spacing: -0.5px; margin-bottom: 2px;
-  }
-  .header .subtitle {
-    font-size: 1.05em; font-weight: 500; color: var(--accent);
-    margin-bottom: 10px; letter-spacing: 0.5px;
-  }
-  .header .contact {
-    font-size: 0.88em; color: var(--gray-500);
-    display: flex; gap: 14px; flex-wrap: wrap; align-items: center;
-  }
-  .header .contact a {
-    color: var(--primary); text-decoration: none; font-weight: 500;
-    transition: opacity 0.2s;
-  }
-  .header .contact a:hover { opacity: 0.7; }
-  .profile-photo {
-    width: 130px; height: 170px; flex-shrink: 0;
-    border-radius: 10px; overflow: hidden;
-    border: 2px solid var(--border);
-    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
-  }
-  .profile-photo img {
-    width: 100%; height: 100%; object-fit: cover;
-  }
-
-  /* ===== DIVIDERS ===== */
-  .divider {
-    height: 1px; background: linear-gradient(90deg, var(--border), transparent);
-    margin: 32px 0; border: none;
-  }
-  .divider-bold {
-    height: 2px;
-    background: linear-gradient(90deg, var(--dark), var(--accent), transparent);
-    margin: 36px 0; border: none;
-  }
-
-  /* ===== SECTION TITLES ===== */
-  .section-title {
-    font-size: 1.15em; font-weight: 700; color: var(--dark);
-    text-transform: uppercase; letter-spacing: 2px;
-    padding-bottom: 8px; margin-bottom: 20px;
-    border-bottom: 2.5px solid var(--dark);
-    display: flex; align-items: center; gap: 8px;
-  }
-  .section-title .title-dot {
-    width: 8px; height: 8px; border-radius: 50%;
-    background: var(--accent); display: inline-block;
-  }
-
-  /* ===== INTRODUCE ===== */
-  .introduce { margin-bottom: 8px; }
-  .introduce p {
-    font-size: 0.93em; color: var(--gray-700); margin-bottom: 14px;
-    text-align: justify; word-break: keep-all;
-  }
-  .introduce .highlight-box {
-    background: linear-gradient(135deg, #f0f4ff 0%, #f8f9ff 100%);
-    border-left: 3px solid var(--accent);
-    padding: 14px 18px; border-radius: 0 8px 8px 0;
-    margin: 16px 0;
-  }
-  .introduce .highlight-box p {
-    margin-bottom: 0; font-size: 0.91em; color: #3d4263;
-  }
-
-  /* ===== SKILL ===== */
-  .skill-category {
-    margin-bottom: 22px;
-    padding: 16px 20px;
-    background: var(--gray-100);
-    border-radius: 10px;
-    border: 1px solid var(--border);
-  }
-  .skill-category h3 {
-    font-size: 0.98em; font-weight: 700; color: var(--dark);
-    margin-bottom: 10px;
-  }
-  .badges { line-height: 2.2; margin-bottom: 8px; }
-  .badges img { height: 22px; margin-right: 5px; vertical-align: middle; }
-  .skill-desc {
-    margin: 8px 0 0; padding-left: 0; list-style: none;
-  }
-  .skill-desc li {
-    font-size: 0.87em; color: var(--gray-700);
-    padding: 2px 0 2px 16px;
-    position: relative;
-  }
-  .skill-desc li::before {
-    content: ''; position: absolute; left: 0; top: 11px;
-    width: 6px; height: 6px; border-radius: 50%;
-    background: var(--accent); opacity: 0.6;
-  }
-
-  /* ===== EXPERIENCE ===== */
-  .exp-card {
-    display: flex; gap: 24px; margin-bottom: 20px;
-    padding: 18px 0; border-bottom: 1px solid var(--border);
-  }
-  .exp-card:last-child { border-bottom: none; }
-  .exp-left {
-    min-width: 140px; flex-shrink: 0;
-  }
-  .exp-period {
-    font-size: 0.85em; color: var(--gray-500); font-weight: 500;
-    font-family: 'Inter', sans-serif;
-  }
-  .exp-right { flex: 1; }
-  .exp-company {
-    font-size: 1.08em; font-weight: 700; color: var(--dark);
-    margin-bottom: 2px;
-  }
-  .exp-role { font-size: 0.88em; color: var(--gray-500); margin-bottom: 8px; }
-  .tag {
-    display: inline-block; font-size: 0.7em; font-weight: 600;
-    padding: 2px 10px; border-radius: 12px; margin-left: 6px;
-    vertical-align: middle; letter-spacing: 0.3px;
-  }
-  .tag-active { background: #dcfce7; color: #166534; }
-  .tag-duration { background: #dbeafe; color: #1e40af; }
-  .tag-position { background: #f3e8ff; color: #6b21a8; }
-  .exp-list { padding-left: 18px; margin: 0; }
-  .exp-list li { font-size: 0.88em; color: var(--gray-700); margin-bottom: 2px; }
-
-  /* ===== PROJECT ===== */
-  .project-company {
-    font-size: 1.05em; font-weight: 700; color: var(--dark);
-    padding: 10px 16px;
-    background: linear-gradient(135deg, var(--dark) 0%, #2d2d5e 100%);
-    color: #fff; border-radius: 8px; margin-bottom: 16px;
-  }
-  .project-period {
-    font-size: 0.85em; color: var(--gray-500); font-weight: 500;
-    margin-bottom: 4px; font-family: 'Inter', sans-serif;
-  }
-  .project-title {
-    font-size: 0.98em; font-weight: 700; color: var(--dark);
-    margin-bottom: 10px;
-  }
-  .project-block { margin-bottom: 24px; }
-  .project-block ul { padding-left: 18px; margin: 4px 0 8px; }
-  .project-block li { font-size: 0.88em; color: var(--gray-700); margin-bottom: 2px; }
-  .project-block li strong { color: var(--gray-900); font-weight: 600; }
-  .project-block ul ul { margin: 2px 0 6px; }
-  .project-block ul ul li { font-size: 0.85em; color: #555; }
-  .star { color: #f59e0b; }
-
-  .skill-keywords {
-    font-size: 0.8em; color: var(--gray-500);
-    padding: 10px 14px; margin: 8px 0 0;
-    background: var(--gray-100); border-radius: 6px;
-    border: 1px solid var(--border);
-  }
-  .skill-keywords strong { color: var(--accent); font-weight: 600; margin-right: 6px; }
-
-  /* ===== TABLE ===== */
-  table {
-    width: 100%; border-collapse: separate; border-spacing: 0;
-    margin: 14px 0; font-size: 0.86em;
-    border-radius: 8px; overflow: hidden;
-    border: 1px solid var(--border);
-  }
-  th {
-    background: var(--dark); color: #fff; font-weight: 600;
-    text-align: left; padding: 10px 14px; font-size: 0.9em;
-  }
-  td {
-    padding: 9px 14px; border-bottom: 1px solid var(--border);
-    color: var(--gray-700);
-  }
-  tr:last-child td { border-bottom: none; }
-  tr:nth-child(even) td { background: #fafbfc; }
-
-  /* ===== BLOG ===== */
-  .blog-card {
-    display: flex; align-items: center; gap: 14px;
-    padding: 16px 20px; background: var(--gray-100);
-    border-radius: 10px; border: 1px solid var(--border);
-  }
-  .blog-icon { font-size: 1.8em; }
-  .blog-card a {
-    color: var(--primary); text-decoration: none; font-weight: 600;
-    font-size: 0.95em;
-  }
-  .blog-card p { font-size: 0.85em; color: var(--gray-500); margin-top: 2px; }
-
-  /* ===== PRINT ===== */
-  @page {
-    margin: 10mm 10mm 10mm 10mm;
-  }
-  @media print {
-    body { padding: 0; max-width: 100%; font-size: 0.92em; margin: 0; }
-    .section-title { page-break-after: avoid; }
-    .project-block, .exp-card { page-break-inside: avoid; }
-    .skill-category { page-break-inside: avoid; }
-    .divider, .divider-bold { margin: 18px 0; }
-    .project-company { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
-    th { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
-    .tag { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
-    .highlight-box { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
-    .skill-category { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
-  }
-</style>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" />
+  <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
 
-<!-- ==================== HEADER ==================== -->
-<div class="header">
-  <div class="header-text">
-    <h1>최명표</h1>
-    <div class="subtitle">Cloud Engineering · DevOps · SRE</div>
-    <div class="contact">
-      <span>📧 <a href="mailto:zld3598@naver.com">zld3598@naver.com</a></span>
-      <span>📱 010-9756-3389</span>
-      <span>🌐 <a href="https://cloudnote.tistory.com/">cloudnote.tistory.com</a></span>
+  <!-- ===== NAVBAR ===== -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-container">
+      <a href="#hero" class="nav-logo">
+        <span class="logo-bracket">&lt;</span>MP<span class="logo-bracket">/&gt;</span>
+      </a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#about"          class="nav-link">About</a></li>
+        <li><a href="#skills"         class="nav-link">Skills</a></li>
+        <li><a href="#experience"     class="nav-link">Experience</a></li>
+        <li><a href="#projects"       class="nav-link">Projects</a></li>
+        <li><a href="#certifications" class="nav-link">Certs</a></li>
+        <li><a href="#contact"        class="nav-link nav-cta">Contact</a></li>
+      </ul>
+      <button class="hamburger" id="hamburger" aria-label="메뉴 열기">
+        <span></span><span></span><span></span>
+      </button>
     </div>
-  </div>
-  <div class="profile-photo">
-    <img src="profile.jpg" alt="최명표 프로필">
-  </div>
-</div>
+  </nav>
 
-<div class="divider-bold"></div>
+  <!-- ===== HERO ===== -->
+  <section class="hero" id="hero">
+    <div class="hero-bg">
+      <div class="grid-lines"></div>
+      <div class="floating-particles" id="particles"></div>
+    </div>
+    <div class="hero-content">
+      <div class="hero-badge">
+        <i class="fas fa-circle-check"></i> 총 경력 4년+ · Available for Opportunities
+      </div>
+      <h1 class="hero-title">
+        <span class="hero-name">최명표</span>
+        <span class="hero-name-en">Choi Myeong Pyo</span>
+      </h1>
+      <div class="hero-roles">
+        <span class="role-tag">☁ Cloud Engineering</span>
+        <span class="role-divider">·</span>
+        <span class="role-tag">⚙ DevOps</span>
+        <span class="role-divider">·</span>
+        <span class="role-tag">🛡 SRE</span>
+      </div>
+      <p class="hero-quote">
+        "반복되는 일은 자동화하고,<br />
+        알게 된 것은 공유하여 팀 전체를 성장시킨다"
+      </p>
+      <div class="hero-tech-pills">
+        <span>AWS</span><span>Azure</span><span>NCP</span><span>KT Cloud</span>
+        <span>Kubernetes</span><span>Terraform</span><span>Datadog</span><span>AIOps</span>
+      </div>
+      <div class="hero-actions">
+        <a href="#projects" class="btn btn-primary">
+          <i class="fas fa-rocket"></i> 프로젝트 보기
+        </a>
+        <a href="#contact" class="btn btn-outline">
+          <i class="fas fa-envelope"></i> 연락하기
+        </a>
+      </div>
+      <div class="hero-scroll-hint">
+        <span>Scroll</span>
+        <div class="scroll-line"></div>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="terminal-window">
+        <div class="terminal-header">
+          <span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span>
+          <span class="terminal-title">choi@cloud:~$</span>
+        </div>
+        <div class="terminal-body">
+          <div class="terminal-line"><span class="prompt">$</span> <span class="cmd">whoami</span></div>
+          <div class="terminal-line output">최명표 | Cloud/DevOps/SRE Engineer</div>
+          <div class="terminal-line"><span class="prompt">$</span> <span class="cmd">cat experience.txt</span></div>
+          <div class="terminal-line output">메타넷엑스  · 2025.09 ~ 현재  ✓</div>
+          <div class="terminal-line output">팀프레시    · 2024.08 ~ 2025.06 ✓</div>
+          <div class="terminal-line output">디딤365     · 2022.04 ~ 2024.08 ✓</div>
+          <div class="terminal-line"><span class="prompt">$</span> <span class="cmd">echo $CURRENT_FOCUS</span></div>
+          <div class="terminal-line output">Azure MSP + MCP Server + AIOps(BigPanda)</div>
+          <div class="terminal-line"><span class="prompt">$</span> <span class="cmd">cat certifications.txt</span></div>
+          <div class="terminal-line output">AWS SA Pro · CKA · Azure Admin · NCP <span class="cursor-blink">▌</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-<!-- ==================== INTRODUCE ==================== -->
-<div class="section-title"><span class="title-dot"></span> INTRODUCE</div>
-<div class="introduce">
+  <!-- ===== ABOUT ===== -->
+  <section class="section" id="about">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">// About Me</span>
+        <h2 class="section-title">Cloud Native Engineer</h2>
+      </div>
+      <div class="about-grid">
+        <div class="about-text">
+          <p class="about-lead">
+            멀티 클라우드(AWS, Azure, NCP, KT Cloud) 환경에서의 인프라 설계·구축·운영부터
+            컨테이너 기반 플랫폼, CI/CD 파이프라인 자동화, 모니터링 체계 수립까지
+            <strong>클라우드 네이티브 환경의 전체 라이프사이클</strong>을 경험한 Cloud/DevOps 엔지니어입니다.
+          </p>
+          <p>
+            Terraform IaC, GitOps 배포 체계, 이벤트 기반 알림-티켓 자동화 등 운영 효율을 높이는
+            파이프라인을 직접 설계·구현해 왔으며, 보안 아키텍처 설계부터 최소 권한 원칙(RBAC), 네트워크 보안,
+            데이터 암호화까지 <strong>엔드투엔드 보안 설계 경험</strong>을 보유하고 있습니다.
+          </p>
+          <p>
+            새로운 기술을 학습하면 기술 블로그에 정리하고, 팀 내 세미나와 가이드 문서를 통해 동료와
+            나누는 것을 즐깁니다. Vibe Coding 및 GitHub Copilot을 활용한 <strong>AI 협업 문화</strong>를 팀에
+            전파하며, 함께 성장하는 팀이 더 강하다고 믿습니다.
+          </p>
+          <div class="about-links">
+            <a href="mailto:zld3598@naver.com" class="about-link">
+              <i class="fas fa-envelope"></i> zld3598@naver.com
+            </a>
+            <a href="https://cloudnote.tistory.com" target="_blank" rel="noopener" class="about-link">
+              <i class="fas fa-blog"></i> cloudnote.tistory.com
+            </a>
+            <a href="tel:010-9756-3389" class="about-link">
+              <i class="fas fa-phone"></i> 010-9756-3389
+            </a>
+          </div>
+        </div>
+        <div class="about-focus">
+          <h3 class="focus-title">⚡ Current Focus</h3>
+          <div class="focus-cards">
+            <div class="focus-card">
+              <div class="focus-icon"><i class="fab fa-microsoft"></i></div>
+              <div class="focus-content">
+                <strong>Azure Enterprise MSP 운영</strong>
+                <p>VM, App Service, Functions, SQL 등 리소스 운영 및 모니터링 체계 고도화</p>
+              </div>
+            </div>
+            <div class="focus-card">
+              <div class="focus-icon"><i class="fas fa-server"></i></div>
+              <div class="focus-content">
+                <strong>Azure MCP Server 리소스 자동화</strong>
+                <p>Model Context Protocol 기반 리소스 관리·조회 워크플로우 구축</p>
+              </div>
+            </div>
+            <div class="focus-card">
+              <div class="focus-icon"><i class="fas fa-code"></i></div>
+              <div class="focus-content">
+                <strong>GitHub Copilot Enterprise 도입 컨설팅</strong>
+                <p>도입 컨설팅 및 가이드 작성, AI 기반 개발 생산성 향상</p>
+              </div>
+            </div>
+            <div class="focus-card">
+              <div class="focus-icon"><i class="fas fa-brain"></i></div>
+              <div class="focus-content">
+                <strong>AIOps 도입 PoC (BigPanda)</strong>
+                <p>AI 기반 인프라 운영 자동화 및 이상 탐지 모델 검증</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-  <p>멀티 클라우드(AWS, Azure, NCP, KT Cloud) 환경에서의 인프라 설계·구축·운영부터 컨테이너 기반 플랫폼, CI/CD 파이프라인 자동화, 모니터링 체계 수립까지 <strong>클라우드 네이티브 환경의 전체 라이프사이클</strong>을 경험한 Cloud/DevOps 엔지니어입니다.</p>
+  <!-- ===== SKILLS ===== -->
+  <section class="section section-dark" id="skills">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">// Tech Stack</span>
+        <h2 class="section-title">기술 스택</h2>
+      </div>
+      <div class="skills-grid">
 
-  <p>"<strong>반복되는 일은 자동화하고, 알게 된 것은 공유한다</strong>"는 원칙으로 일합니다. Terraform IaC, GitOps 배포 체계, 이벤트 기반 알림-티켓 자동화 등 운영 효율을 높이는 파이프라인을 직접 설계·구현해 왔으며, 보안 아키텍처 설계부터 최소 권한 원칙, 네트워크 보안, 데이터 암호화까지 <strong>엔드투엔드 보안 설계 경험</strong>을 보유하고 있습니다.</p>
+        <!-- Cloud & Infrastructure -->
+        <div class="skill-category">
+          <div class="skill-cat-header">
+            <i class="fas fa-cloud skill-cat-icon cloud"></i>
+            <h3>Cloud &amp; Infrastructure</h3>
+          </div>
+          <div class="skill-tags-wrap">
+            <span class="stag primary">AWS</span>
+            <span class="stag primary">Azure</span>
+            <span class="stag">NCP</span>
+            <span class="stag">KT Cloud</span>
+            <span class="stag">Multi Cloud</span>
+            <span class="stag">Hybrid Cloud</span>
+          </div>
+          <p class="skill-cat-desc">멀티 클라우드 IaaS/PaaS 환경 설계 및 IDC 연동 하이브리드 네트워크 아키텍처 구축</p>
+        </div>
 
-  <div class="highlight-box">
-    <p>새로운 기술을 학습하면 <strong>기술 블로그에 정리하고, 팀 내 세미나와 가이드 문서</strong>를 통해 동료와 나누는 것을 즐깁니다. 혼자 빠르게 가는 것보다 <strong>함께 성장하는 팀</strong>이 더 강하다고 믿으며, 지식 공유와 문서화를 통해 팀 전체의 기술 수준을 끌어올리는 데 기여하고 싶습니다.</p>
-  </div>
+        <!-- DevOps & Container -->
+        <div class="skill-category">
+          <div class="skill-cat-header">
+            <i class="fas fa-cubes skill-cat-icon container"></i>
+            <h3>DevOps &amp; Container</h3>
+          </div>
+          <div class="skill-tags-wrap">
+            <span class="stag primary">ECS Fargate</span>
+            <span class="stag primary">Kubernetes (EKS/AKS/NKS)</span>
+            <span class="stag">Docker</span>
+            <span class="stag">Argo CD</span>
+            <span class="stag">Helm</span>
+            <span class="stag primary">Terraform (IaC)</span>
+          </div>
+          <p class="skill-cat-desc">컨테이너 오케스트레이션 운영 및 GitOps 기반 배포 체계, Terraform 모듈화 설계</p>
+        </div>
 
-  <p>현재는 Azure 기반 엔터프라이즈 MSP 운영과 함께, <strong>GitHub Copilot Enterprise 도입 컨설팅</strong>, <strong>Azure MCP Server 기반 리소스 관리 자동화</strong>, <strong>AIOps 도입 PoC</strong> 등 차세대 클라우드 운영 혁신을 추진하고 있습니다.</p>
-</div>
+        <!-- CI/CD & Automation -->
+        <div class="skill-category">
+          <div class="skill-cat-header">
+            <i class="fas fa-infinity skill-cat-icon cicd"></i>
+            <h3>CI/CD &amp; Automation</h3>
+          </div>
+          <div class="skill-tags-wrap">
+            <span class="stag primary">Bitbucket + Bamboo</span>
+            <span class="stag primary">Azure DevOps</span>
+            <span class="stag">Python / Shell</span>
+            <span class="stag">AWS/Azure CLI</span>
+            <span class="stag">Slack/Teams 연동</span>
+          </div>
+          <p class="skill-cat-desc">Pipelines 구축 및 운영 자동화 스크립트 개발, 이벤트 기반 알림-티켓 자동화 구현</p>
+        </div>
 
-<div class="divider-bold"></div>
+        <!-- Observability -->
+        <div class="skill-category">
+          <div class="skill-cat-header">
+            <i class="fas fa-chart-line skill-cat-icon obs"></i>
+            <h3>Observability</h3>
+          </div>
+          <div class="skill-tags-wrap">
+            <span class="stag primary">Datadog (Infra/APM/DBM)</span>
+            <span class="stag">CloudWatch</span>
+            <span class="stag">Azure Monitor</span>
+            <span class="stag">Grafana</span>
+            <span class="stag primary">DORA Metrics</span>
+          </div>
+          <p class="skill-cat-desc">통합 모니터링 구축, SLO/에러 버짓 기반 장애 대응 체계 및 로그 분석 환경 구성</p>
+        </div>
 
-<!-- ==================== SKILL ==================== -->
-<div class="section-title"><span class="title-dot"></span> SKILL</div>
+        <!-- Security & Governance -->
+        <div class="skill-category">
+          <div class="skill-cat-header">
+            <i class="fas fa-shield-alt skill-cat-icon sec"></i>
+            <h3>Security &amp; Governance</h3>
+          </div>
+          <div class="skill-tags-wrap">
+            <span class="stag primary">Azure Landing Zone</span>
+            <span class="stag primary">KMS / Key Vault</span>
+            <span class="stag">IAM / Azure Policy</span>
+            <span class="stag">Defender</span>
+            <span class="stag">WAF</span>
+            <span class="stag primary">ISMS-P / CSAP</span>
+          </div>
+          <p class="skill-cat-desc">최소 권한 원칙(RBAC), 데이터 암호화, 컴플라이언스 대응 및 보안 아키텍처 설계</p>
+        </div>
 
-<div class="skill-category">
-  <h3>☁️ Cloud & Infrastructure</h3>
-  <div class="badges">
-    <img src="https://img.shields.io/badge/AWS-232F3E?style=flat-square&logo=amazonwebservices&logoColor=white">
-    <img src="https://img.shields.io/badge/Azure-0078D4?style=flat-square&logo=microsoftazure&logoColor=white">
-    <img src="https://img.shields.io/badge/NCP-03C75A?style=flat-square&logo=naver&logoColor=white">
-    <img src="https://img.shields.io/badge/KT%20Cloud-FF0000?style=flat-square&logoColor=white">
-  </div>
-  <ul class="skill-desc">
-    <li>AWS, Azure, NCP, KT Cloud 등 멀티 클라우드 IaaS/PaaS 환경 설계·구축·운영</li>
-    <li>VPN, ExpressRoute, Direct Connect 기반 하이브리드 네트워크 아키텍처 설계</li>
-    <li>VPC/VNet Peering, NSG/ASG, Private Subnet 등 네트워크 보안 구성</li>
-    <li>IDC ↔ Cloud 간 하이브리드 클라우드, 멀티 클라우드 연동 설계</li>
-  </ul>
-</div>
+        <!-- Tools & Collaboration -->
+        <div class="skill-category">
+          <div class="skill-cat-header">
+            <i class="fas fa-tools skill-cat-icon tools"></i>
+            <h3>Tools &amp; Collaboration</h3>
+          </div>
+          <div class="skill-tags-wrap">
+            <span class="stag primary">GitHub Enterprise</span>
+            <span class="stag primary">Copilot Enterprise</span>
+            <span class="stag">Claude Code</span>
+            <span class="stag">VSCode</span>
+            <span class="stag">JetBrains</span>
+            <span class="stag">JIRA / Confluence</span>
+            <span class="stag">MCP Server</span>
+          </div>
+          <p class="skill-cat-desc">AI 코드 어시스턴트(Copilot, Claude) 및 AI Agent 활용, 협업 툴 기반 워크플로우 효율화</p>
+        </div>
 
-<div class="skill-category">
-  <h3>🐳 DevOps & Container</h3>
-  <div class="badges">
-    <img src="https://img.shields.io/badge/Docker-2496ED?style=flat-square&logo=docker&logoColor=white">
-    <img src="https://img.shields.io/badge/Kubernetes-326CE5?style=flat-square&logo=kubernetes&logoColor=white">
-    <img src="https://img.shields.io/badge/EKS-FF9900?style=flat-square&logo=amazoneks&logoColor=white">
-    <img src="https://img.shields.io/badge/AKS-0078D4?style=flat-square&logo=microsoftazure&logoColor=white">
-    <img src="https://img.shields.io/badge/NKS-03C75A?style=flat-square&logo=naver&logoColor=white">
-    <img src="https://img.shields.io/badge/Fargate-FF9900?style=flat-square&logo=awsfargate&logoColor=white">
-    <img src="https://img.shields.io/badge/ECS-FF9900?style=flat-square&logo=amazonecs&logoColor=white">
-  </div>
-  <div class="badges">
-    <img src="https://img.shields.io/badge/Argo%20CD-EF7B4D?style=flat-square&logo=argo&logoColor=white">
-    <img src="https://img.shields.io/badge/Helm-0F1689?style=flat-square&logo=helm&logoColor=white">
-    <img src="https://img.shields.io/badge/Kustomize-326CE5?style=flat-square&logoColor=white">
-    <img src="https://img.shields.io/badge/Terraform-7B42BC?style=flat-square&logo=terraform&logoColor=white">
-  </div>
-  <ul class="skill-desc">
-    <li>EKS, AKS, NKS, ECS Fargate / ECS Anywhere 기반 컨테이너 오케스트레이션 운영</li>
-    <li>Docker Images 최적화, 멀티스테이지 빌드 최적화 및 ECR/ACR 레지스트리 관리</li>
-    <li>Argo CD, Helm, Kustomize 기반 GitOps 배포 체계 구축</li>
-    <li>Terraform (config.yaml 기반) IaC 프로비저닝 및 환경별 모듈 구조 설계</li>
-  </ul>
-</div>
+      </div>
+    </div>
+  </section>
 
-<div class="skill-category">
-  <h3>⚙️ CI/CD & Automation</h3>
-  <div class="badges">
-    <img src="https://img.shields.io/badge/Azure%20DevOps-0078D7?style=flat-square&logo=azuredevops&logoColor=white">
-    <img src="https://img.shields.io/badge/Bitbucket-0052CC?style=flat-square&logo=bitbucket&logoColor=white">
-    <img src="https://img.shields.io/badge/Bamboo-0052CC?style=flat-square&logo=bamboo&logoColor=white">
-    <img src="https://img.shields.io/badge/Slack-4A154B?style=flat-square&logo=slack&logoColor=white">
-    <img src="https://img.shields.io/badge/Teams-6264A7?style=flat-square&logo=microsoftteams&logoColor=white">
-  </div>
-  <div class="badges">
-    <img src="https://img.shields.io/badge/Shell-4EAA25?style=flat-square&logo=gnubash&logoColor=white">
-    <img src="https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=python&logoColor=white">
-    <img src="https://img.shields.io/badge/Azure%20CLI-0078D4?style=flat-square&logo=microsoftazure&logoColor=white">
-  </div>
-  <ul class="skill-desc">
-    <li>Azure DevOps (Pipelines, Repos, Artifacts), Bitbucket + Bamboo 기반 CI/CD 구축·운영</li>
-    <li>AWS / Azure / Datadog 이벤트 알림 → Slack · Teams 연동 자동화</li>
-    <li>특정 알림 트리거 시 JIRA 티켓 자동 생성 · 담당자 자동 할당 구현</li>
-    <li>ITSM 워크플로우 자동화 (장애 접수 → 티켓 생성 → 할당 → 처리 → 완료)</li>
-    <li>시스템 성능 및 비용 이상 감지, Service Updates 소식 자동 전파, RI 만료 알림</li>
-    <li>Shell, Python, AWS CLI, Azure CLI 기반 운영 자동화 스크립트 개발</li>
-  </ul>
-</div>
+  <!-- ===== EXPERIENCE ===== -->
+  <section class="section" id="experience">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">// Experience</span>
+        <h2 class="section-title">경력 사항</h2>
+        <p class="section-subtitle">총 경력 <strong style="color:var(--accent-cyan)">4년+</strong></p>
+      </div>
+      <div class="timeline">
 
-<div class="skill-category">
-  <h3>📊 Monitoring & Observability</h3>
-  <div class="badges">
-    <img src="https://img.shields.io/badge/Datadog-632CA6?style=flat-square&logo=datadog&logoColor=white">
-    <img src="https://img.shields.io/badge/CloudWatch-FF4F8B?style=flat-square&logo=amazoncloudwatch&logoColor=white">
-    <img src="https://img.shields.io/badge/Azure%20Monitor-0078D4?style=flat-square&logo=microsoftazure&logoColor=white">
-  </div>
-  <ul class="skill-desc">
-    <li>Datadog (Infrastructure, APM, DBM) + CloudWatch 를 활용한 통합 모니터링 구축</li>
-    <li>Azure Monitor, Log Analytics, Application Insights 기반 모니터링 및 알림 구성</li>
-    <li>DORA 메트릭 기반 DevOps 성숙도 체계 구현, Datadog SLO / 에러 버짓 기반 장애 대응 체계 수립 및 Runbook 작성</li>
-    <li>로그 기반 장애 감지 체계 및 대시보드 구축</li>
-  </ul>
-</div>
+        <!-- 메타넷엑스 -->
+        <div class="timeline-item">
+          <div class="timeline-marker current"></div>
+          <div class="timeline-content">
+            <div class="timeline-header">
+              <div class="timeline-company">
+                <h3>🏢 메타넷엑스 (MetanetX)</h3>
+                <span class="timeline-role">대리 · Cloud Engineer</span>
+              </div>
+              <div class="timeline-period-wrap">
+                <span class="timeline-period current-badge">재직 중</span>
+                <span class="timeline-date">2025.09 ~ 현재</span>
+              </div>
+            </div>
+            <div class="timeline-tags">
+              <span>Azure</span><span>GitHub Copilot</span><span>AIOps</span><span>MCP Server</span><span>Entra ID</span>
+            </div>
+            <ul class="timeline-tasks">
+              <li><strong>Azure Enterprise MSP 운영:</strong> VM, App Service, Functions, SQL 등 리소스 운영 및 모니터링 체계 고도화</li>
+              <li>GitHub Enterprise / Copilot Enterprise 도입 컨설팅 및 가이드 작성</li>
+              <li>Azure MCP Server 기반 리소스 관리 자동화 및 AIOps 도입 PoC (BigPanda) 수행</li>
+              <li>금융권 보안 랜딩존 프로젝트 TA 및 Entra ID RBAC/조건부 액세스 설계</li>
+            </ul>
+          </div>
+        </div>
 
-<div class="skill-category">
-  <h3>🔐 Security & Governance</h3>
-  <div class="badges">
-    <img src="https://img.shields.io/badge/IAM-232F3E?style=flat-square&logo=amazoniam&logoColor=white">
-    <img src="https://img.shields.io/badge/KMS-232F3E?style=flat-square&logo=awssecretsmanager&logoColor=white">
-    <img src="https://img.shields.io/badge/Entra%20ID-0078D4?style=flat-square&logo=microsoftazure&logoColor=white">
-    <img src="https://img.shields.io/badge/Defender-0078D4?style=flat-square&logo=microsoftazure&logoColor=white">
-    <img src="https://img.shields.io/badge/Azure%20Policy-0078D4?style=flat-square&logo=microsoftazure&logoColor=white">
-  </div>
-  <ul class="skill-desc">
-    <li>AWS: IAM 최소 권한 원칙, KMS 암호화, CloudTrail 감사 로그, AWS Config 규정 준수</li>
-    <li>Azure: Entra ID RBAC/조건부 액세스, Key Vault, Defender for Cloud, Azure Policy</li>
-    <li>보안 취약점 점검 및 조치, ISMS-P · CSAP 인증 대응 보안 아키텍처 설계</li>
-    <li>백업 정책 수립 및 자동화, HA 및 DR 구성, 네트워크 보안 설계 (WAF, NSG/ASG, 접근제어 솔루션)</li>
-  </ul>
-</div>
+        <!-- 팀프레시 -->
+        <div class="timeline-item">
+          <div class="timeline-marker"></div>
+          <div class="timeline-content">
+            <div class="timeline-header">
+              <div class="timeline-company">
+                <h3>🚚 팀프레시 (TimF)</h3>
+                <span class="timeline-role">팀원 · DevOps / SRE</span>
+              </div>
+              <div class="timeline-period-wrap">
+                <span class="timeline-period">11개월</span>
+                <span class="timeline-date">2024.08 ~ 2025.06</span>
+              </div>
+            </div>
+            <div class="timeline-tags">
+              <span>AWS</span><span>ECS</span><span>Terraform</span><span>Datadog</span><span>CI/CD</span>
+            </div>
+            <ul class="timeline-tasks">
+              <li><strong>AWS MSA 인프라 운영:</strong> ECS Fargate/Anywhere 기반 마이크로서비스 운영 및 GitOps 배포</li>
+              <li>Terraform IaC 모듈화 및 Docker 이미지 최적화(멀티스테이지)</li>
+              <li>Datadog 통합 모니터링 구축, SLO/에러 버짓 기반 장애 대응 체계 수립</li>
+              <li>Bitbucket+Bamboo CI/CD 파이프라인 구축 및 운영 자동화(JIRA/Slack 연동)</li>
+            </ul>
+          </div>
+        </div>
 
-<div class="skill-category">
-  <h3>🛠 Tools & Collaboration</h3>
-  <div class="badges">
-    <img src="https://img.shields.io/badge/Git-F05032?style=flat-square&logo=git&logoColor=white">
-    <img src="https://img.shields.io/badge/GitHub%20Enterprise-181717?style=flat-square&logo=github&logoColor=white">
-    <img src="https://img.shields.io/badge/VS%20Code-007ACC?style=flat-square&logo=visualstudiocode&logoColor=white">
-    <img src="https://img.shields.io/badge/Copilot-000000?style=flat-square&logo=githubcopilot&logoColor=white">
-    <img src="https://img.shields.io/badge/JIRA-0052CC?style=flat-square&logo=jira&logoColor=white">
-    <img src="https://img.shields.io/badge/Confluence-172B4D?style=flat-square&logo=confluence&logoColor=white">
-  </div>
-  <ul class="skill-desc">
-    <li>Git / GitHub Enterprise 기반 브랜치 전략(Git Flow) 및 코드 리뷰 프로세스 운영</li>
-    <li>GitHub Copilot Enterprise 기반 AI 코드 어시스턴트 활용 및 도입 컨설팅</li>
-    <li>JIRA · Confluence 기반 프로젝트 관리 및 ITSM 워크플로우 운영</li>
-    <li>Azure MCP Server · Docs MCP 기반 리소스 관리 자동화 및 지식 표준화</li>
-  </ul>
-</div>
+        <!-- 디딤365 -->
+        <div class="timeline-item">
+          <div class="timeline-marker"></div>
+          <div class="timeline-content">
+            <div class="timeline-header">
+              <div class="timeline-company">
+                <h3>☁ 디딤365 (Didim365)</h3>
+                <span class="timeline-role">주임 · Cloud Engineer</span>
+              </div>
+              <div class="timeline-period-wrap">
+                <span class="timeline-period">2년 4개월</span>
+                <span class="timeline-date">2022.04 ~ 2024.08</span>
+              </div>
+            </div>
+            <div class="timeline-tags">
+              <span>Multi Cloud</span><span>ISMS-P</span><span>Migration</span><span>Linux/Windows</span><span>Network</span>
+            </div>
+            <ul class="timeline-tasks">
+              <li><strong>멀티 클라우드 통합 운영:</strong> AWS, Azure, NCP, KT Cloud 기반 IaaS/PaaS 설계·구축</li>
+              <li>공공/민간 고객 대상 Managed Service 운영 (서버, 네트워크, DB, 보안)</li>
+              <li>ISMS-P / CSAP 인증 대응 보안 아키텍처 설계 및 백업/DR 구성</li>
+              <li>IDC ↔ Cloud 마이그레이션 수행 (Lift &amp; Shift, Re-platform)</li>
+            </ul>
+          </div>
+        </div>
 
-<div class="divider-bold"></div>
+      </div>
+    </div>
+  </section>
 
-<!-- ==================== EXPERIENCE ==================== -->
-<div class="section-title"><span class="title-dot"></span> EXPERIENCE <span style="font-size:0.75em; color:var(--gray-500); font-weight:400; letter-spacing:0; text-transform:none; margin-left:8px;">총 4년+</span></div>
+  <!-- ===== PROJECTS ===== -->
+  <section class="section section-dark" id="projects">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">// Project Highlights</span>
+        <h2 class="section-title">주요 프로젝트</h2>
+      </div>
 
-<div class="exp-card">
-  <div class="exp-left">
-    <div class="exp-period">2025. 09 ~</div>
-  </div>
-  <div class="exp-right">
-    <div class="exp-company">메타넷엑스 (MetanetX) <span class="tag tag-active">재직 중</span> <span class="tag tag-position">대리</span></div>
-    <div class="exp-role">Cloud Engineer · SE</div>
-    <ul class="exp-list">
-      <li>Azure 기반 엔터프라이즈 고객 대상 Managed Service 구축/운영</li>
-      <li>GitHub Enterprise / Copilot Enterprise 도입 컨설팅</li>
-      <li>Azure MCP Server 기반 리소스 관리 자동화, AIOps 도입 PoC</li>
-      <li>금융권 보안 랜딩존 프로젝트 TA</li>
-    </ul>
-  </div>
-</div>
+      <div class="projects-filter">
+        <button class="filter-btn active" data-filter="all">All</button>
+        <button class="filter-btn" data-filter="cloud">Cloud</button>
+        <button class="filter-btn" data-filter="devops">DevOps</button>
+        <button class="filter-btn" data-filter="automation">Automation</button>
+        <button class="filter-btn" data-filter="security">Security</button>
+        <button class="filter-btn" data-filter="aiops">AIOps</button>
+      </div>
 
-<div class="exp-card">
-  <div class="exp-left">
-    <div class="exp-period">2024. 08 ~ 2025. 06</div>
-  </div>
-  <div class="exp-right">
-    <div class="exp-company">팀프레시 (TimF) <span class="tag tag-duration">11개월</span> <span class="tag tag-position">팀원</span></div>
-    <div class="exp-role">DevOps / SRE</div>
-    <ul class="exp-list">
-      <li>AWS 기반 MSA 인프라 운영, Terraform IaC, Datadog 통합 모니터링 구축</li>
-      <li>ECS Fargate / ECS Anywhere 서비스 운영, CI/CD 파이프라인 구축</li>
-      <li>AWS 성능 최적화 / 비용 최적화 / 네트워크 구성 최적화</li>
-      <li>JIRA 티켓 자동화, Slack 알림 연동, 운영 자동화 스크립트 개발</li>
-    </ul>
-  </div>
-</div>
+      <div class="projects-grid" id="projectsGrid">
 
-<div class="exp-card">
-  <div class="exp-left">
-    <div class="exp-period">2022. 04 ~ 2024. 08</div>
-  </div>
-  <div class="exp-right">
-    <div class="exp-company">디딤365 (Didim365) <span class="tag tag-duration">2년 4개월</span> <span class="tag tag-position">주임</span></div>
-    <div class="exp-role">Cloud Engineer</div>
-    <ul class="exp-list">
-      <li>멀티 클라우드(AWS, Azure, NCP, KT Cloud) 인프라 설계·구축·운영</li>
-      <li>Cloud Managed Service 운영 (서버, 네트워크, DB, 스토리지)</li>
-      <li>ISMS-P / CSAP 인증 대응, 보안 정책 수립, 업무 자동화 구성</li>
-      <li>서비스 로그/에러 분석을 통한 장애 진단 및 트러블슈팅</li>
-    </ul>
-  </div>
-</div>
+        <!-- 1. Azure IaaS/PaaS -->
+        <div class="project-card" data-category="cloud security">
+          <div class="project-card-header">
+            <div class="project-icon azure-icon"><i class="fab fa-microsoft"></i></div>
+            <div class="project-tags">
+              <span class="ptag cloud">Cloud</span>
+              <span class="ptag security">Security</span>
+            </div>
+          </div>
+          <h3 class="project-title">Azure IaaS/PaaS Managed Service 운영</h3>
+          <p class="project-sub">엔터프라이즈 인프라 운영 · 메타넷엑스</p>
+          <p class="project-desc">
+            VM, App Service, Functions, SQL DB 등 Azure 리소스 기술 지원 및 운영.
+            Azure Monitor / App Insights 기반 모니터링 및 알림 구성.
+            Landing Zone 기반 Policy 거버넌스 적용 및 컴플라이언스 준수.
+          </p>
+          <div class="project-tech">
+            <span>Azure</span><span>Monitor</span><span>Policy</span><span>SQL</span><span>App Service</span>
+          </div>
+          <div class="project-metrics">
+            <div class="metric">
+              <span class="metric-value">Enterprise</span>
+              <span class="metric-label">MSP 운영</span>
+            </div>
+            <div class="metric">
+              <span class="metric-value">Landing Zone</span>
+              <span class="metric-label">거버넌스</span>
+            </div>
+          </div>
+        </div>
 
-<div class="divider-bold"></div>
+        <!-- 2. AWS MSA -->
+        <div class="project-card" data-category="cloud devops automation">
+          <div class="project-card-header">
+            <div class="project-icon aws-icon"><i class="fab fa-aws"></i></div>
+            <div class="project-tags">
+              <span class="ptag cloud">Cloud</span>
+              <span class="ptag devops">DevOps</span>
+              <span class="ptag automation">Automation</span>
+            </div>
+          </div>
+          <h3 class="project-title">AWS 기반 MSA 인프라 운영 및 자동화</h3>
+          <p class="project-sub">팀프레시 마이크로서비스 운영 · 팀프레시</p>
+          <p class="project-desc">
+            ECS Fargate / Anywhere 기반 컨테이너 운영 및 GitOps 배포 체계 구축.
+            Datadog 통합 모니터링 및 DORA 메트릭 기반 성숙도 측정.
+            JIRA 티켓 자동 생성 및 Slack 알림 연동으로 운영 효율 극대화.
+          </p>
+          <div class="project-tech">
+            <span>AWS</span><span>ECS</span><span>Datadog</span><span>GitOps</span><span>Bamboo</span>
+          </div>
+          <div class="project-metrics">
+            <div class="metric">
+              <span class="metric-value">DORA</span>
+              <span class="metric-label">메트릭 도입</span>
+            </div>
+            <div class="metric">
+              <span class="metric-value">자동화</span>
+              <span class="metric-label">티켓·알림</span>
+            </div>
+          </div>
+        </div>
 
-<!-- ==================== PROJECT ==================== -->
-<div class="section-title"><span class="title-dot"></span> PROJECT</div>
+        <!-- 3. GitHub Copilot -->
+        <div class="project-card" data-category="automation">
+          <div class="project-card-header">
+            <div class="project-icon copilot-icon"><i class="fab fa-github"></i></div>
+            <div class="project-tags">
+              <span class="ptag automation">Automation</span>
+            </div>
+          </div>
+          <h3 class="project-title">GitHub Copilot Enterprise 도입 컨설팅</h3>
+          <p class="project-sub">개발 생산성 향상 프로젝트 · 메타넷엑스</p>
+          <p class="project-desc">
+            도입 조건 분석 및 과금(per-user) 정책 정리, Organization 구성.
+            Repository 정책 설정 가이드 및 IDE(VS Code) 연동 정책 수립.
+            코드 리뷰 프로세스 개선 및 개발 팀 온보딩 지원.
+          </p>
+          <div class="project-tech">
+            <span>Copilot</span><span>GitHub Ent.</span><span>DevEx</span><span>VS Code</span>
+          </div>
+          <div class="project-metrics">
+            <div class="metric">
+              <span class="metric-value">Enterprise</span>
+              <span class="metric-label">도입 컨설팅</span>
+            </div>
+            <div class="metric">
+              <span class="metric-value">AI</span>
+              <span class="metric-label">생산성 향상</span>
+            </div>
+          </div>
+        </div>
 
-<!-- MetanetX -->
-<div class="project-company">메타넷엑스 (MetanetX)</div>
-<div class="project-period">2025. 09 ~ 현재</div>
+        <!-- 4. MCP Server ★ -->
+        <div class="project-card featured" data-category="automation aiops">
+          <div class="project-card-header">
+            <div class="project-icon mcp-icon"><i class="fas fa-server"></i></div>
+            <div class="project-tags">
+              <span class="ptag automation">Automation</span>
+              <span class="ptag aiops">AIOps</span>
+              <span class="featured-star">⭐</span>
+            </div>
+          </div>
+          <h3 class="project-title">Azure MCP Server 기반 리소스 관리 자동화</h3>
+          <p class="project-sub">운영 효율화 및 지식 표준화 프로젝트 · 메타넷엑스</p>
+          <p class="project-desc">
+            Model Context Protocol(MCP) 서버를 활용한 Azure 리소스 조회·관리 워크플로우 구축.
+            운영 리소스 상태 확인 및 변경 이력 추적 자동화로 수동 작업 최소화.
+            Docs MCP를 도입하여 팀 내 지식 표준화 및 운영 문서 정확도 향상.
+          </p>
+          <div class="project-tech">
+            <span>MCP Server</span><span>Automation</span><span>Docs MCP</span><span>Workflow</span><span>Azure SDK</span>
+          </div>
+          <div class="project-metrics">
+            <div class="metric">
+              <span class="metric-value">↓ 60%</span>
+              <span class="metric-label">수동 작업 감소</span>
+            </div>
+            <div class="metric">
+              <span class="metric-value">AI</span>
+              <span class="metric-label">기반 자동화</span>
+            </div>
+          </div>
+        </div>
 
-<div class="project-block">
-  <ul>
-    <li><strong>Azure IaaS/PaaS Managed 서비스 운영</strong>
-      <ul>
-        <li>Azure VM, App Service, Functions, Storage, SQL Database 등 운영 및 기술 지원</li>
-        <li>Azure Monitor / Application Insights 기반 모니터링 및 알림 구성</li>
-        <li>Azure 랜딩존 기반 거버넌스 적용 및 리소스 컴플라이언스 관리</li>
-      </ul>
-    </li>
-    <li><strong>GitHub Enterprise / Copilot Enterprise 도입 검토 및 구성</strong>
-      <ul>
-        <li>도입 조건 분석 및 과금 방식(per-user, seat 기반) 정리</li>
-        <li>초기 Organization 구성, Repository 정책 설정 가이드 작성</li>
-        <li>IDE(VS Code, JetBrains) 연동 및 Copilot 사용 정책 수립</li>
-        <li>Azure 권한 정책 설계 (Microsoft Entra ID RBAC, 조건부 액세스, SSO 연동)</li>
-      </ul>
-    </li>
-    <li><strong>Azure MCP Server 기반 리소스 관리 자동화 <span class="star">⭐</span></strong>
-      <ul>
-        <li>MCP Server를 활용한 Azure 리소스 조회·관리 워크플로우 구축</li>
-        <li>Docs MCP를 통한 지식 표준화 및 문서 정확도 향상</li>
-        <li>MCP 기반 운영 업무 효율화 (리소스 상태 확인, 변경 이력 추적)</li>
-      </ul>
-    </li>
-    <li><strong>AIOps 도입 PoC <span class="star">⭐</span></strong>
-      <ul>
-        <li>AI 기반 인프라 운영 자동화 도입을 위한 개념 검증(PoC) 수행</li>
-        <li>Bigpanda 기반 AIOps 장애 예측, 이상 탐지, 자동 대응 시나리오 설계 및 검증</li>
-        <li>Azure Monitor 데이터 기반 AI 분석 파이프라인 설계</li>
-      </ul>
-    </li>
-  </ul>
-  <div class="skill-keywords"><strong>Skill Keywords</strong> Azure, Azure Monitor, Application Insights, Azure Policy, Entra ID, GitHub Enterprise, Copilot Enterprise, Azure MCP Server, Docs MCP, AIOps</div>
-</div>
+        <!-- 5. AIOps ★ -->
+        <div class="project-card featured" data-category="aiops automation">
+          <div class="project-card-header">
+            <div class="project-icon aiops-icon"><i class="fas fa-brain"></i></div>
+            <div class="project-tags">
+              <span class="ptag aiops">AIOps</span>
+              <span class="ptag automation">Automation</span>
+              <span class="featured-star">⭐</span>
+            </div>
+          </div>
+          <h3 class="project-title">AIOps 도입 PoC (BigPanda)</h3>
+          <p class="project-sub">차세대 인프라 운영 혁신 · 메타넷엑스</p>
+          <p class="project-desc">
+            AI 기반 인프라 운영 자동화 도입을 위한 개념 검증(PoC) 및 타당성 분석.
+            BigPanda 기반 장애 예측, 이상 탐지(Anomaly Detection) 모델 검증.
+            Azure Monitor 데이터 파이프라인 설계 및 자동 대응 시나리오 검증.
+          </p>
+          <div class="project-tech">
+            <span>AIOps</span><span>BigPanda</span><span>AI/ML</span><span>Anomaly Detection</span><span>Azure Monitor</span>
+          </div>
+          <div class="project-metrics">
+            <div class="metric">
+              <span class="metric-value">PoC</span>
+              <span class="metric-label">검증 완료</span>
+            </div>
+            <div class="metric">
+              <span class="metric-value">AI</span>
+              <span class="metric-label">장애 예측</span>
+            </div>
+          </div>
+        </div>
 
-<div class="divider"></div>
+        <!-- 6. Multi Cloud 보안 -->
+        <div class="project-card" data-category="cloud security">
+          <div class="project-card-header">
+            <div class="project-icon sec-icon"><i class="fas fa-shield-alt"></i></div>
+            <div class="project-tags">
+              <span class="ptag cloud">Cloud</span>
+              <span class="ptag security">Security</span>
+            </div>
+          </div>
+          <h3 class="project-title">멀티 클라우드 ISMS-P / CSAP 보안 아키텍처</h3>
+          <p class="project-sub">공공/민간 보안 인증 대응 · 디딤365</p>
+          <p class="project-desc">
+            AWS, Azure, NCP, KT Cloud 멀티 클라우드 환경의 ISMS-P/CSAP 인증 대응.
+            최소 권한 원칙(RBAC), 데이터 암호화, WAF, 네트워크 보안 아키텍처 설계.
+            IDC ↔ Cloud 마이그레이션 및 백업/DR 구성 수행.
+          </p>
+          <div class="project-tech">
+            <span>ISMS-P</span><span>CSAP</span><span>WAF</span><span>KMS</span><span>Multi Cloud</span>
+          </div>
+          <div class="project-metrics">
+            <div class="metric">
+              <span class="metric-value">인증</span>
+              <span class="metric-label">ISMS-P 대응</span>
+            </div>
+            <div class="metric">
+              <span class="metric-value">E2E</span>
+              <span class="metric-label">보안 설계</span>
+            </div>
+          </div>
+        </div>
 
-<!-- TimF -->
-<div class="project-company">팀프레시 (TimF)</div>
-<div class="project-period">2024. 08 ~ 2025. 06 · 11개월</div>
-<div class="project-title">AWS 기반 MSA 인프라 운영</div>
+      </div>
+    </div>
+  </section>
 
-<div class="project-block">
-  <ul>
-    <li><strong>AWS 기반 MSA 인프라 운영 및 모니터링 자동화</strong>
-      <ul>
-        <li>ECS Fargate / ECS Anywhere 기반 마이크로서비스 운영 자동화</li>
-        <li>Terraform 기반 IaC 구성 및 환경별 모듈 구조 설계 (config.yaml 기반 프로비저닝)</li>
-        <li>Datadog (Infra, APM, DBM) + CloudWatch 를 활용한 통합 모니터링</li>
-        <li>Datadog SLO / 에러 버짓 기반 장애 대응 체계 수립 및 Runbook 작성</li>
-        <li>DORA 메트릭 기반 DevOps 성숙도 체계 구현</li>
-      </ul>
-    </li>
-    <li><strong>CI/CD 파이프라인 구성 및 컨테이너 이미지 관리</strong>
-      <ul>
-        <li>Bitbucket + Bamboo 기반 CI/CD 환경 구축 및 운영</li>
-        <li>Docker 이미지 최적화 (멀티스테이지 빌드) 및 ECR 레지스트리 관리</li>
-        <li>브랜치 전략(Git Flow) 기반 환경별 자동 배포 구성</li>
-      </ul>
-    </li>
-    <li><strong>운영 자동화 및 알림 체계 구축</strong>
-      <ul>
-        <li>AWS / Datadog 이벤트 알림 → Slack 연동 자동화</li>
-        <li>특정 알림 트리거 시 JIRA 티켓 자동 생성 및 담당자 자동 할당</li>
-        <li>Service Health 알림 자동 전파</li>
-        <li>운영 자동화 스크립트 개발 (Shell, Python, AWS CLI)</li>
-      </ul>
-    </li>
-    <li><strong>네트워크 및 성능 최적화</strong>
-      <ul>
-        <li>서비스 간 네트워크 구성 및 아키텍처 구조 최적화</li>
-        <li>VM / Container 성능 최적화 및 비용 최적화</li>
-      </ul>
-    </li>
-  </ul>
-  <div class="skill-keywords"><strong>Skill Keywords</strong> AWS, ECS Fargate, ECS Anywhere, Terraform, Datadog, CloudWatch, Bitbucket, Bamboo, Docker, ECR, JIRA, Slack, Python, Shell Script</div>
-</div>
+  <!-- ===== CERTIFICATIONS ===== -->
+  <section class="section" id="certifications">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">// Certification &amp; Education</span>
+        <h2 class="section-title">자격증 &amp; 교육</h2>
+      </div>
 
-<div class="divider"></div>
+      <div class="cert-edu-grid">
+        <!-- Certifications -->
+        <div class="cert-block">
+          <h3 class="cert-block-title"><i class="fas fa-certificate"></i> Certifications</h3>
+          <div class="certs-grid">
 
-<!-- Didim365 -->
-<div class="project-company">디딤365 (Didim365)</div>
-<div class="project-period">2022. 04 ~ 2024. 08 · 28개월</div>
-<div class="project-title">클라우드 인프라 통합 운영</div>
-<div class="exp-role" style="margin-bottom:10px;">Cloud Engineer · 발주사: 민간/공공 다수</div>
+            <div class="cert-card">
+              <div class="cert-badge azure"><i class="fab fa-microsoft"></i></div>
+              <div class="cert-info">
+                <h4>Azure Admin</h4>
+                <p>Associate</p>
+                <span class="cert-date expected">2025.11 (Expected)</span>
+              </div>
+            </div>
 
-<div class="project-block">
-  <ul>
-    <li><strong>공공 및 민간 고객 클라우드 구축·운영</strong>
-      <ul>
-        <li>멀티클라우드(AWS, Azure, NCP, KT Cloud 등) 기반 IaaS/PaaS 환경 설계·구축 및 Managed 서비스 운영</li>
-        <li>3-Tier 아키텍처, OS, 애플리케이션 전반에 대한 구축·운영 및 장애 대응</li>
-        <li>서버, 네트워크, 스토리지, DB 등 인프라 전반 24/7 운영</li>
-        <li>네트워크(VPC/VNet, VPN, 방화벽) 구성 및 보안 정책 설계·적용</li>
-        <li>서비스 안정성 확보를 위한 모니터링, 로그 관리 및 운영 프로세스 개선</li>
-      </ul>
-    </li>
-    <li><strong>보안 정책 수립 및 컴플라이언스 대응</strong>
-      <ul>
-        <li>보안 정책 준수 및 운영 가이드 제공, ISMS-P / CSAP 인증 지원</li>
-        <li>IAM 최소 권한 원칙 적용, KMS 기반 데이터 암호화 체계 구축</li>
-        <li>백업 정책 수립 및 자동화, DR 구성 등 안정성 강화 업무 수행</li>
-      </ul>
-    </li>
-    <li><strong>클라우드 마이그레이션 지원</strong>
-      <ul>
-        <li>워크로드 분석 기반 CSP 선정 및 아키텍처 설계</li>
-        <li>On-premise(IDC) → Cloud 마이그레이션 수행 (Lift &amp; Shift, Re-platform)</li>
-        <li>네트워크 보안 설계 (WAF, Security Group, NACL 접근제어 시스템)</li>
-      </ul>
-    </li>
-  </ul>
-  <div class="skill-keywords"><strong>Skill Keywords</strong> AWS, NCP, KT Cloud, ISMS-P, CSAP, DR, WAF, Backup</div>
-</div>
+            <div class="cert-card">
+              <div class="cert-badge k8s"><i class="fas fa-dharmachakra"></i></div>
+              <div class="cert-info">
+                <h4>CKA</h4>
+                <p>Kubernetes Administrator</p>
+                <span class="cert-date">2024.03</span>
+              </div>
+            </div>
 
-<div class="divider-bold"></div>
+            <div class="cert-card">
+              <div class="cert-badge azure-sp"><i class="fab fa-microsoft"></i></div>
+              <div class="cert-info">
+                <h4>Azure Virtual Desktop</h4>
+                <p>Specialty</p>
+                <span class="cert-date">2023.08</span>
+              </div>
+            </div>
 
-<!-- ==================== CERTIFICATION ==================== -->
-<div class="section-title"><span class="title-dot"></span> CERTIFICATION</div>
-<table>
-  <thead>
-    <tr><th>자격증</th><th>등급</th><th>취득일</th><th>발급기관</th></tr>
-  </thead>
-  <tbody>
-    <tr><td>Azure Administrator</td><td>Associate</td><td>2025.11</td><td>Microsoft</td></tr>
-    <tr><td>Certified Kubernetes Administrator (CKA)</td><td>Admin</td><td>2024.03</td><td>Linux Foundation</td></tr>
-    <tr><td>AWS Solutions Architect</td><td>Professional</td><td>2023.03</td><td>Amazon Web Services</td></tr>
-    <tr><td>Azure Virtual Desktop</td><td>Specialty</td><td>2023.08</td><td>Microsoft</td></tr>
-    <tr><td>Naver Cloud Platform Certified</td><td>Professional</td><td>2022.12</td><td>Naver Cloud Platform</td></tr>
-    <tr><td>리눅스마스터</td><td>2급</td><td>2021.12</td><td>한국정보통신진흥협회</td></tr>
-    <tr><td>무선설비</td><td>산업기사</td><td>2018.08</td><td>한국방송통신전파진흥원</td></tr>
-    <tr><td>정보통신</td><td>산업기사</td><td>2018.05</td><td>한국방송통신전파진흥원</td></tr>
-    <tr><td>네트워크관리사</td><td>2급</td><td>2017.12</td><td>한국정보통신자격협회</td></tr>
-  </tbody>
-</table>
+            <div class="cert-card">
+              <div class="cert-badge aws"><i class="fab fa-aws"></i></div>
+              <div class="cert-info">
+                <h4>AWS SA Pro</h4>
+                <p>Professional</p>
+                <span class="cert-date">2023.03</span>
+              </div>
+            </div>
 
-<div class="divider"></div>
+            <div class="cert-card">
+              <div class="cert-badge ncp"><i class="fas fa-cloud"></i></div>
+              <div class="cert-info">
+                <h4>Naver Cloud</h4>
+                <p>Professional</p>
+                <span class="cert-date">2022.12</span>
+              </div>
+            </div>
 
-<!-- ==================== EDUCATION ==================== -->
-<div class="section-title"><span class="title-dot"></span> EDUCATION</div>
-<table>
-  <thead>
-    <tr><th>교육기관</th><th>과정명</th><th>기간</th></tr>
-  </thead>
-  <tbody>
-    <tr><td>구트아카데미학원</td><td>쿠버네티스(Kubernetes) 고급 활용을 통한 컨테이너 오케스트레이션 구현</td><td>2023.04</td></tr>
-    <tr><td>한국정보교육원</td><td>클라우드컴퓨팅과 보안솔루션을 활용한 DC 엔지니어 양성</td><td>2021.09 ~ 2022.03</td></tr>
-  </tbody>
-</table>
+            <div class="cert-card">
+              <div class="cert-badge linux"><i class="fab fa-linux"></i></div>
+              <div class="cert-info">
+                <h4>리눅스마스터 2급</h4>
+                <p>KAIT</p>
+                <span class="cert-date">2021.12</span>
+              </div>
+            </div>
 
-<div class="divider"></div>
+            <div class="cert-card">
+              <div class="cert-badge wireless"><i class="fas fa-broadcast-tower"></i></div>
+              <div class="cert-info">
+                <h4>무선설비/정보통신</h4>
+                <p>산업기사 (통합)</p>
+                <span class="cert-date">2018.05 / 2018.08</span>
+              </div>
+            </div>
 
-<!-- ==================== ARTICLE & BLOG ==================== -->
-<div class="section-title"><span class="title-dot"></span> ARTICLE & BLOG</div>
-<div class="blog-card">
-  <div class="blog-icon">📝</div>
-  <div>
-    <a href="https://cloudnote.tistory.com/">cloudnote.tistory.com</a>
-    <p>클라우드, Kubernetes, DevOps, Azure 관련 학습 및 실무 경험 정리</p>
-  </div>
-</div>
+            <div class="cert-card">
+              <div class="cert-badge network"><i class="fas fa-network-wired"></i></div>
+              <div class="cert-info">
+                <h4>네트워크관리사 2급</h4>
+                <p>한국정보통신자격협회</p>
+                <span class="cert-date">2017.12</span>
+              </div>
+            </div>
 
+          </div>
+        </div>
+
+        <!-- Education -->
+        <div class="edu-block">
+          <h3 class="cert-block-title"><i class="fas fa-graduation-cap"></i> Education</h3>
+          <div class="edu-list">
+
+            <div class="edu-item">
+              <div class="edu-dot"></div>
+              <div class="edu-content">
+                <span class="edu-date">2023.04 (구르아카데미)</span>
+                <h4>쿠버네티스 고급 활용을 통한 컨테이너 오케스트레이션</h4>
+                <p>K8s 아키텍처 및 실무 운영 기술</p>
+              </div>
+            </div>
+
+            <div class="edu-item">
+              <div class="edu-dot"></div>
+              <div class="edu-content">
+                <span class="edu-date">2021.09 ~ 2022.03</span>
+                <h4>클라우드/보안 DC 엔지니어 양성</h4>
+                <p>한국정보교육원 (6개월)</p>
+              </div>
+            </div>
+
+            <div class="edu-item">
+              <div class="edu-dot"></div>
+              <div class="edu-content">
+                <span class="edu-date">2017.03 ~ 2022.03</span>
+                <h4>정보통신공학 학사</h4>
+                <p>전공 심화 과정 졸업</p>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Blog Card -->
+          <div class="blog-card">
+            <div class="blog-card-icon"><i class="fas fa-pen-nib"></i></div>
+            <div class="blog-card-content">
+              <strong>Cloud Note</strong>
+              <p>클라우드, K8s, Azure 관련 실무 트러블슈팅 정리</p>
+              <a href="https://cloudnote.tistory.com" target="_blank" rel="noopener" class="blog-url">
+                cloudnote.tistory.com →
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CONTACT ===== -->
+  <section class="section section-dark" id="contact">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">// Contact &amp; Next Steps</span>
+        <h2 class="section-title">Let's Build Something Great</h2>
+        <p class="section-subtitle">커피챗 및 기술 인터뷰 문의를 환영합니다 🤝</p>
+      </div>
+      <div class="contact-grid">
+
+        <!-- How I Work -->
+        <div class="how-i-work">
+          <h3 class="how-title">HOW I WORK &amp; DELIVER VALUE</h3>
+          <div class="how-cards">
+            <div class="how-card">
+              <div class="how-icon"><i class="fas fa-robot"></i></div>
+              <div class="how-content">
+                <strong>운영 자동화 &amp; AI 기반 효율성</strong>
+                <p>AI Agent와 AIOps, MCP Server 기반 자동화로 반복 작업을 최소화하고 MTTR을 획기적으로 단축하여 비즈니스 민첩성을 확보합니다.</p>
+              </div>
+            </div>
+            <div class="how-card">
+              <div class="how-icon"><i class="fas fa-shield-alt"></i></div>
+              <div class="how-content">
+                <strong>Security by Design</strong>
+                <p>인프라 설계 단계부터 보안 및 컴플라이언스를 내재화하여, 안전하고 신뢰할 수 있는 클라우드 환경을 구축합니다.</p>
+              </div>
+            </div>
+            <div class="how-card">
+              <div class="how-icon"><i class="fas fa-pencil-ruler"></i></div>
+              <div class="how-content">
+                <strong>문서화 &amp; AI 협업</strong>
+                <p>Vibe Coding 및 GitHub Copilot을 활용한 지식 공유 문화를 조성하여 팀 온보딩 시간을 줄이고, 개발/운영 생산성을 극대화합니다.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Contact Info -->
+        <div class="contact-card-wrap">
+          <div class="contact-card">
+            <div class="contact-card-icon"><i class="fas fa-handshake"></i></div>
+            <h3>연락하기</h3>
+            <div class="contact-items-list">
+              <div class="contact-item">
+                <div class="contact-icon"><i class="fas fa-envelope"></i></div>
+                <div class="contact-detail">
+                  <span class="contact-label">Email</span>
+                  <a href="mailto:zld3598@naver.com" class="contact-value">zld3598@naver.com</a>
+                </div>
+              </div>
+              <div class="contact-item">
+                <div class="contact-icon"><i class="fas fa-phone"></i></div>
+                <div class="contact-detail">
+                  <span class="contact-label">Phone</span>
+                  <a href="tel:010-9756-3389" class="contact-value">010-9756-3389</a>
+                </div>
+              </div>
+              <div class="contact-item">
+                <div class="contact-icon"><i class="fas fa-blog"></i></div>
+                <div class="contact-detail">
+                  <span class="contact-label">Tech Blog</span>
+                  <a href="https://cloudnote.tistory.com" target="_blank" rel="noopener" class="contact-value">cloudnote.tistory.com</a>
+                </div>
+              </div>
+            </div>
+            <div class="open-to-tags">
+              <span>Cloud Architecture</span>
+              <span>DevOps Engineering</span>
+              <span>SRE</span>
+              <span>MSP 운영</span>
+              <span>AIOps</span>
+            </div>
+            <a href="mailto:zld3598@naver.com" class="btn btn-primary btn-full">
+              <i class="fas fa-paper-plane"></i> 메일 보내기
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-logo">
+          <span class="logo-bracket">&lt;</span>MP<span class="logo-bracket">/&gt;</span>
+        </div>
+        <p class="footer-quote">"반복되는 일은 자동화하고, 알게 된 것은 공유한다"</p>
+        <div class="footer-links">
+          <a href="mailto:zld3598@naver.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
+          <a href="https://cloudnote.tistory.com" target="_blank" rel="noopener" aria-label="Blog"><i class="fas fa-blog"></i></a>
+          <a href="https://github.com" target="_blank" rel="noopener" aria-label="GitHub"><i class="fab fa-github"></i></a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2025 최명표 · Cloud Engineer · DevOps · SRE · 총 경력 4년+</p>
+        <p>Built with ❤️ and passion for automation</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
 </body>
 </html>
